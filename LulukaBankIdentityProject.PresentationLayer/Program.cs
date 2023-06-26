@@ -1,7 +1,12 @@
+using LulukaBankIdentityProject.DataAccessLayer.Concrete;
+using LulukaBankIdentityProject.EntityLayer.Concrete;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddDbContext<Context>(); //new added
+builder.Services.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<Context>(); //new added
 
 var app = builder.Build();
 
@@ -17,6 +22,10 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
+
+
+app.UseAuthentication(); //new added
+
 
 app.UseAuthorization();
 
