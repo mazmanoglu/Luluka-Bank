@@ -1,7 +1,9 @@
 ﻿using LulukaBankIdentityProject.DataTransferObjectLayer.DTOs.AppUserDTOs;
 using LulukaBankIdentityProject.EntityLayer.Concrete;
+using MailKit.Net.Smtp;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using MimeKit;
 
 namespace LulukaBankIdentityProject.PresentationLayer.Controllers
 {
@@ -25,6 +27,8 @@ namespace LulukaBankIdentityProject.PresentationLayer.Controllers
 		{
 			if (ModelState.IsValid)
 			{
+				Random random = new Random();
+				int confirmCode = random.Next(100000, 1000000);
 				AppUser appUser = new AppUser()
 				{
 					UserName = appUserRegisterDTO.Username,
@@ -33,11 +37,30 @@ namespace LulukaBankIdentityProject.PresentationLayer.Controllers
 					Email = appUserRegisterDTO.Email,
 					City = "Leuven",
 					District = "Oost Brabant",
-					ImageUrl = "Pic"
+					ImageUrl = "Pic",
+					ConfirmCode = confirmCode
 				};
 				var result = await _userManager.CreateAsync(appUser, appUserRegisterDTO.Password);
 				if (result.Succeeded)
 				{
+					MimeMessage mimeMessage = new MimeMessage();
+					MailboxAddress mailboxAddressFrom = new MailboxAddress("Luluka Bank Admin","oyuncuhesabi8888@gmail.com");
+					MailboxAddress mailboxAddressTo = new MailboxAddress("User",appUser.Email);
+					mimeMessage.From.Add(mailboxAddressFrom);
+					mimeMessage.To.Add(mailboxAddressTo);
+
+					var bodyBuilder = new BodyBuilder();
+					bodyBuilder.TextBody = "Your confirmation code to complete the registration process: "+confirmCode;
+					mimeMessage.Body = bodyBuilder.ToMessageBody();
+					mimeMessage.Subject = "Luluka Bank Confirmation Code";
+
+					SmtpClient client = new SmtpClient();
+					client.Connect("smtp.gmail.com",587,false);
+					client.Authenticate("oyuncuhesabi8888@gmail.com", "yrmjncvvtxujtsbj");
+					client.Send(mimeMessage);
+					client.Disconnect(true);
+
+
 					return RedirectToAction("Index", "ConfirmMail");
 				}
 				else
@@ -58,3 +81,5 @@ namespace LulukaBankIdentityProject.PresentationLayer.Controllers
 // password must have at least 1 uppercase
 // password must have at least 1 symbol
 // password must have at least 1 number
+
+// added mailkit nuget package to send confirm code as mail

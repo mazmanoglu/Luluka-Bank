@@ -6,11 +6,12 @@ namespace LulukaBankIdentityProject.PresentationLayer.Models
 	{
 		public override IdentityError PasswordTooShort(int length)
 		{
-			return new IdentityError()
-			{
-				Code = "PasswordTooShort",
-				Description = $"Wachtwoord moet uit minimaal {length} tekens bestaan"
-			};
+			return base.PasswordTooShort(length);
+			//return new IdentityError()
+			//{
+			//	Code = "PasswordTooShort",
+			//	Description = $"Wachtwoord moet uit minimaal {length} tekens bestaan"
+			//};
 		}
 		public override IdentityError PasswordRequiresUpper()
 		{

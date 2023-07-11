@@ -103,7 +103,8 @@ input[type="text"], input[type="password"], input[type="email"]{
 	font-family: 'Quicksand', sans-serif;
 }
 input[type="text"] {
-	background: url("../images/user.png") no-repeat 382px 11px;
+	/*background: url("../images/user.png") no-repeat 382px 11px;*/
+	background: url("../images/user.png") no-repeat 97%;
 	background-size: 25px;
 }
 input[type="email"] {
