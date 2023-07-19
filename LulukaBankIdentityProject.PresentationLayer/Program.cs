@@ -23,11 +23,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 app.UseRouting();
-
-
 app.UseAuthentication(); //new added
-
-
 app.UseAuthorization();
 
 app.MapControllerRoute(

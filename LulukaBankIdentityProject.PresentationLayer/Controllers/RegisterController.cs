@@ -56,10 +56,12 @@ namespace LulukaBankIdentityProject.PresentationLayer.Controllers
 
 					SmtpClient client = new SmtpClient();
 					client.Connect("smtp.gmail.com",587,false);
-					client.Authenticate("oyuncuhesabi8888@gmail.com", "yrmjncvvtxujtsbj");
+					client.Authenticate("oyuncuhesabi8888@gmail.com", "yrmjncvvtxujtsbj"); //google account - application passwords
 					client.Send(mimeMessage);
 					client.Disconnect(true);
 
+
+					TempData["Mail"] = appUserRegisterDTO.Email;
 
 					return RedirectToAction("Index", "ConfirmMail");
 				}
