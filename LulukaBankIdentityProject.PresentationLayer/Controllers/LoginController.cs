@@ -33,7 +33,7 @@ namespace LulukaBankIdentityProject.PresentationLayer.Controllers
             var user = await _userManager.FindByNameAsync(loginViewModel.Username);
             if (user.EmailConfirmed == true)
             {
-               return RedirectToAction("Index", "MyProfile");
+               return RedirectToAction("Index", "MyAccounts");
             }
             // we will write otherwise situations later like --> else = please confirm your email
          }

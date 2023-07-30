@@ -12,5 +12,15 @@ namespace LulukaBankIdentityProject.EntityLayer.Concrete
 		public string TransactionType { get; set; }
 		public decimal TransactionAmount { get; set; }
 		public DateTime TransactionDate { get; set; }
+
+
+		public int? SenderID { get; set; }
+		public int? ReceiverID { get; set; }
+		public CustomerAccount SenderCustomer { get; set; }
+		public CustomerAccount ReceiverCustomer { get; set; }
 	}
 }
+
+/*
+	ID - Type of Transaction (send/receive/payment) - Amount - Date - Receiver - Sender
+ */

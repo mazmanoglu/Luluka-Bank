@@ -16,5 +16,9 @@ namespace LulukaBankIdentityProject.EntityLayer.Concrete
 		public int AppUserID { get; set; }
 		public AppUser AppUser { get; set; }
 
+
+		public List<CustomerAccountTransaction> CustomerSender { get; set; }
+		public List<CustomerAccountTransaction> CustomerReceiver { get; set; }
+
 	}
 }
