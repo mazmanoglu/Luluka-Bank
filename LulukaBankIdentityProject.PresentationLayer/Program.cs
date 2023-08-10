@@ -1,4 +1,8 @@
+using LulukaBankIdentityProject.BusinessLayer.Abstract;
+using LulukaBankIdentityProject.BusinessLayer.Concrete;
+using LulukaBankIdentityProject.DataAccessLayer.Abstract;
 using LulukaBankIdentityProject.DataAccessLayer.Concrete;
+using LulukaBankIdentityProject.DataAccessLayer.EntityFramework;
 using LulukaBankIdentityProject.EntityLayer.Concrete;
 using LulukaBankIdentityProject.PresentationLayer.Models;
 
@@ -8,6 +12,9 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 builder.Services.AddDbContext<Context>(); //new added
 builder.Services.AddIdentity<AppUser,AppRole>().AddEntityFrameworkStores<Context>().AddErrorDescriber<CustomIdentityValidator>(); //new added
+
+builder.Services.AddScoped<ICustomerAccountTransactionDAL, EFCustomerAccountTransactionDAL>();
+builder.Services.AddScoped<ICustomerAccountTransactionService, CustomerAccountTransactionManager>();
 
 var app = builder.Build();
 

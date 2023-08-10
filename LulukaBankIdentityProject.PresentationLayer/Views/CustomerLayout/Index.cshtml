@@ -1,49 +1,30 @@
-﻿@{
-	Layout = null;
+﻿﻿@{
+   Layout = null;
 }
 
 <!DOCTYPE html>
 <html lang="en">
 
 @await Component.InvokeAsync("_CustomerLayoutHeaderPartial")
-<!-- We cut header and pasted in Default view on Shared/Components. Then call it here.-->
-
 
 <body class="nav-md">
-	<div class="container body">
-		<div class="main_container">
+   <div class="container body">
+      <div class="main_container">
 
-			@await Component.InvokeAsync("_CustomerLayoutSidebarPartial")
+         @await Component.InvokeAsync("_CustomerLayoutSidebarPartial")
 
-			<!-- top navigation -->
-			@await Component.InvokeAsync("_CustomerLayoutNavbarPartial")
-			<!-- /top navigation -->
+         @await Component.InvokeAsync("_CustomerLayoutNavbarPartial")
 
-			<!-- page content -->
-			@*<div class="right_col" role="main">
-				<div class="">
-					<div class="page-title">
-						<div class="title_left">
-							<h2>@RenderBody()</h2>
-						</div>
-					</div>
-				</div>
-			</div>*@
+         <div class="" role="main">
 
-			<div class="" role="main">
-				@RenderBody()
-			</div>
+            @RenderBody()
 
-			<!-- /page content -->
+         </div>
 
-			<!-- footer content -->
-			@await Component.InvokeAsync("_CustomerLayoutFooterPartial")
-			<!-- /footer content -->
+         @await Component.InvokeAsync("_CustomerLayoutFooterPartial")
 
-		</div>
-	</div>
-
-	@await Component.InvokeAsync("_CustomerLayoutScriptPartial")
-
+      </div>
+   </div>
+   @await Component.InvokeAsync("_CustomerLayoutScriptPartial")
 </body>
 </html>
