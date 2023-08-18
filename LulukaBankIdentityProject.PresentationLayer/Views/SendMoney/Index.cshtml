@@ -30,7 +30,7 @@
 			<div class="col-md-12 col-sm-12 col-xs-12">
 				<div class="x_panel">
 					<div class="x_title">
-						<h2>Luluka Bank <small>Transfer Transactions</small></h2>
+						<h2>Luluka Bank <small>Transfer Transactions - Currency Type: @ViewBag.currency</small></h2>
 						<ul class="nav navbar-right panel_toolbox">
 							<li>
 								<a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
@@ -75,6 +75,25 @@
 								</label>
 								<div class="col-md-6 col-sm-6 col-xs-12">
 									<input id="lastname" class="form-control col-md-7 col-xs-12" data-validate-length-range="6" asp-for="TransactionAmount" placeholder="0,00" required="required" type="text">
+								</div>
+							</div>
+
+
+							@* <div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="lastname">
+									Description <span class="required">*</span>
+								</label>
+								<div class="col-md-6 col-sm-6 col-xs-12">
+									<textarea rows="5" asp-for="Description" class="form-control col-md-7 col-xs-12"></textarea>
+								</div>
+							</div> *@
+
+							<div class="item form-group">
+								<label class="control-label col-md-3 col-sm-3 col-xs-12" for="lastname">
+									Description <span class="required">*</span>
+								</label>
+								<div class="col-md-6 col-sm-6 col-xs-12">
+									<input class="form-control col-md-7 col-xs-12" asp-for="Description" type="text">
 								</div>
 							</div>
 
