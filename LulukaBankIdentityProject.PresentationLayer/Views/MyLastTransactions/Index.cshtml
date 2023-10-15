@@ -1,4 +1,5 @@
-﻿
+﻿@model List<CustomerAccountTransaction>
+
 @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/CustomerLayout/Index.cshtml";
@@ -75,7 +76,6 @@
                            </div>
                         </div>
                      </li>
-
                      <li>
                         <div class="block">
                            <div class="tags">
@@ -96,7 +96,30 @@
                            </div>
                         </div>
                      </li>
+                     @foreach (var item in Model)
+                     {
+                        <li>
+                           <div class="block">
+                              <div class="tags">
+                                 <a href="" class="tag">
+                                    <span>@item.TransactionType</span>
+                                 </a>
+                              </div>
+                              <div class="block_content">
+                                 <h2 class="title">
+                                    <a>Sender: @item.SenderCustomer.AppUser.FirstName @item.SenderCustomer.AppUser.LastName --- Receiver: @item.ReceiverCustomer.AppUser.FirstName @item.ReceiverCustomer.AppUser.LastName</a>
+                                 </h2>
+                                 <div class="byline">
+                                    <span>@item.TransactionDate.ToShortDateString()</span>
+                                 </div>
+                                 <p class="excerpt">
+                                    @item.Description
+                                 </p>
+                              </div>
+                           </div>
+                        </li>
 
+                     }
                   </ul>
                </div>
             </div>

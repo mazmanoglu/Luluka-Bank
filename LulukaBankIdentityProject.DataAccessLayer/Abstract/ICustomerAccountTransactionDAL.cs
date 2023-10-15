@@ -9,5 +9,7 @@ namespace LulukaBankIdentityProject.DataAccessLayer.Abstract
 {
 	public interface ICustomerAccountTransactionDAL : IGenericDAL<CustomerAccountTransaction>
 	{
+		List<CustomerAccountTransaction> MyLastTransaction(int id);
+
 	}
 }

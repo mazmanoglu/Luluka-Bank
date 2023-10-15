@@ -36,6 +36,11 @@ namespace LulukaBankIdentityProject.BusinessLayer.Concrete
 			return _customerAccountDAL.GetById(id);
 		}
 
+		public List<CustomerAccount> BGetCustomerAccountsList(int id)
+		{
+			return _customerAccountDAL.GetCustomerAccountsList(id);
+		}
+
 		public List<CustomerAccount> BGetList()
 		{
 			return _customerAccountDAL.GetList();

@@ -42,5 +42,10 @@ namespace LulukaBankIdentityProject.BusinessLayer.Concrete
 		{
 			_customerAccountTransactionDAL.Update(t);
 		}
-	}
+
+      public List<CustomerAccountTransaction> BMyLastTransaction(int id)
+      {
+         return _customerAccountTransactionDAL.MyLastTransaction(id);
+      }
+   }
 }

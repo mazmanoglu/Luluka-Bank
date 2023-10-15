@@ -9,5 +9,7 @@ namespace LulukaBankIdentityProject.BusinessLayer.Abstract
 {
 	public interface ICustomerAccountTransactionService : IGenericService<CustomerAccountTransaction>
 	{
-	}
+      List<CustomerAccountTransaction> BMyLastTransaction(int id);
+
+   }
 }
