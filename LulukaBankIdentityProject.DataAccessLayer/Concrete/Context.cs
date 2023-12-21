@@ -17,9 +17,10 @@ namespace LulukaBankIdentityProject.DataAccessLayer.Concrete
 		}
 		public DbSet<CustomerAccount> CustomerAccounts { get; set; }
 		public DbSet<CustomerAccountTransaction> CustomerAccountTransactions { get; set; }
+		public DbSet<ElectricBill> ElectricBills { get; set; }
 
 
-      protected override void OnModelCreating(ModelBuilder builder)
+		protected override void OnModelCreating(ModelBuilder builder)
       {
 			builder.Entity<CustomerAccountTransaction>()
 				.HasOne(x => x.SenderCustomer)
